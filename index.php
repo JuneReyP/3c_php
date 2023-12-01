@@ -48,6 +48,7 @@ if(!isset($_SESSION['logged_in'])){
             <?php }
         } else { ?>
             <form action="process.php" method="post">
+                <input type="hidden" name="user_id" value="<?= $_SESSION['u_id'] ?>">
                 <div class="mb-3 mt-2">
                     <label for="fname">Firstname</label>
                     <input type="text" class="form-control mb-3" id="fname" name="firstname">
@@ -89,8 +90,10 @@ if(!isset($_SESSION['logged_in'])){
                 </thead>
                 <tbody>
                     <?php
+                    $userID = $_SESSION['u_id'];
                     $cnt = 1;
-                    $select = $conn->query("SELECT * FROM personal_info");
+                    $select = $conn->prepare("SELECT * FROM personal_info WHERE user_id = ?");
+                    $select->execute([$userID]);
                     foreach ($select as $value) { ?>
 
                         <tr>

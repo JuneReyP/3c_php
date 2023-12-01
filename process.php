@@ -3,14 +3,16 @@ include 'conn.php';
 
 // for adding
 if (isset($_POST['addData'])) {
+    $userID = $_POST['user_id'];
     $fname = $_POST['firstname'];
     $lname = $_POST['lastname'];
     $address = $_POST['address'];
     $contact = $_POST['contact'];
 
     // INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...);
-    $insert = $conn->prepare("INSERT INTO personal_info(p_fname, p_lname, address, contact) VALUES(?, ?, ?, ?)");
+    $insert = $conn->prepare("INSERT INTO personal_info(user_id, p_fname, p_lname, address, contact) VALUES(?, ?, ?, ?, ?)");
     $insert->execute([
+        $userID,
         $fname,
         $lname,
         $address,
