@@ -3,6 +3,7 @@ include 'header.php';
 
 if(isset($_SESSION['logged_in'])){
     header("Location: index.php");
+    ob_end_flush();
 }
 ?>
 <div class="row mt-5 justify-content-center">

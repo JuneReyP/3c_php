@@ -1,6 +1,7 @@
 <?php include 'header.php'; 
 if(isset($_SESSION['logged_in'])){
     header("Location: index.php");
+    ob_end_flush();
 }
 ?>
 

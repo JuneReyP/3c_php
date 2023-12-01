@@ -1,6 +1,7 @@
 <?php include 'header.php';
 if(!isset($_SESSION['logged_in'])){
     header("Location: login.php");
+    ob_end_flush();
 }
 ?>
 <!-- row for input -->
